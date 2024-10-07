@@ -3,8 +3,6 @@ public class LinearEquation {
   private double xTwo;
   private double yOne;
   private double yTwo;
-  private double xThree;
-
 
   // Constructor
   public LinearEquation(double xOne, double yOne, double xTwo, double yTwo) {
@@ -14,21 +12,60 @@ public class LinearEquation {
     this.yTwo = yTwo;
   }
 
-//  public LinearEquation(double xThree) {
-//    this.xThree = xThree;
-//  }
-
   // Returns the slope after using the slope formula
   public double slope() {
-    double slope = (yOne - yTwo) / (xOne - xTwo);
-    double slopeRound = (Math.round(slope) * 100) / 100;
-    return slopeRound;
+    if(xOne - xTwo == 0){
+      return 0;
+    }
+    double slope = (yOne - yTwo)/( xOne - xTwo);
+    return slope;
+  }
+
+  public String equationSlope() {
+    //divide by zero
+    if (slope() == 0) {
+      return "undefined";
+    }
+    // decimal
+    if (slope() % 1 != 0) {
+      if (0 > slope()) {
+        return "-" + (int) Math.abs (yOne - yTwo) + "/" + (int) Math.abs((xOne - xTwo));
+      }
+      else if (yOne - yTwo<0 && xOne - xTwo<0 ){
+        return (int) Math.abs((yOne - yTwo)) + "/" + (int) Math.abs((xOne - xTwo));
+      }
+
+      else{
+        return (int) (yOne - yTwo) + "/" + (int) (xOne - xTwo);
+      }
+    }
+    else{
+      return Integer.toString((int)slope());
+    }
+  }
+
+  public String equation(){
+    if (equationSlope().equals("undefined")){
+      return "undefined";
+    }
+    if (yIntercept() == 0) {
+      return "y = " + equationSlope() + "x";
+    }
+
+    else if (yIntercept() < 0){
+      return "y = " + equationSlope() + "x " + yIntercept();
+
+    }
+    else{
+      return "y = " + equationSlope() + "x + " + yIntercept();
+    }
   }
 
   public double yIntercept() {
     double yIntercept = yOne - (xOne * slope());
     double yInterceptRound = (Math.round(yIntercept) * 100) / 100;
     return yInterceptRound;
+
   }
 
   public double distance() {
@@ -41,20 +78,23 @@ public class LinearEquation {
 
   public double thirdValue(double xThree) {
     double yThree = xThree * slope() + yIntercept();
+    yThree = (Math.round(yThree) * 100) / 100;
     return yThree;
   }
 
   public String toString() {
-    String s = "First pair: (" + (int) xOne + "," + (int) yOne + ")\n"
-            + "Second pair: (" + (int) xTwo + "," + (int) yTwo + ")\n"
-            + "Slope of line: " + slope() + "\n"
-            + "Y-intercept: " + yIntercept() + "\n"
-            + "Slope intercept form: y = " + slope() + "x + " + yIntercept() + "\n"
-            + "Distance between points: " + distance() + "\n";
+    String s =
+            "First pair: (" + (int) xOne + "," + (int) yOne + ")\n"
+                    + "Second pair: (" + (int) xTwo + "," + (int) yTwo + ")\n"
+                    + "Slope of line: " + equationSlope() + "\n"
+                    + "Y-intercept: " + yIntercept() + "\n"
+                    + "Slope intercept form: " + equation() + "\n"
+                    + "Distance between points: " + distance() + "\n";
     return s;
 
   }
 }
+
 
 
 
