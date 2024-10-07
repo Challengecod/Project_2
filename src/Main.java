@@ -19,10 +19,10 @@ public class Main {
     // find the substring the number
     int xOne = Integer.parseInt(pointStrOne.substring(0, commaPosition));
     int yOne = Integer.parseInt(pointStrOne.substring(commaPosition + 1, pointStrOne.length()));
+
     int xTwo = Integer.parseInt(pointStrTwo.substring(0, commaPositionTwo));
-    ;
     int yTwo = Integer.parseInt(pointStrTwo.substring(commaPositionTwo + 1, pointStrTwo.length()));
-    ;
+
 
     LinearEquation points = new LinearEquation(xOne, yOne, xTwo, yTwo);
     System.out.print(points.toString());

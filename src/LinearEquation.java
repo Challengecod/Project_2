@@ -26,19 +26,23 @@ public class LinearEquation {
     if (slope() == 0) {
       return "undefined";
     }
-    // decimal
+    // checks if slope is decimal
     if (slope() % 1 != 0) {
+      // if slope is negative
       if (0 > slope()) {
         return "-" + (int) Math.abs (yOne - yTwo) + "/" + (int) Math.abs((xOne - xTwo));
       }
+      // if slope is postive but both the x and y deltas are negatives cancels out to a positive
       else if (yOne - yTwo<0 && xOne - xTwo<0 ){
         return (int) Math.abs((yOne - yTwo)) + "/" + (int) Math.abs((xOne - xTwo));
       }
 
+      // if it's a decimal we just put the fraction in between
       else{
         return (int) (yOne - yTwo) + "/" + (int) (xOne - xTwo);
       }
     }
+     // else return the whole number slope as a String
     else{
       return Integer.toString((int)slope());
     }
