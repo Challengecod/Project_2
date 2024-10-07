@@ -63,8 +63,10 @@ public class LinearEquation {
 
   public double yIntercept() {
     double yIntercept = yOne - (xOne * slope());
-    double yInterceptRound = (Math.round(yIntercept) * 100) / 100;
-    return yInterceptRound;
+    yIntercept = yIntercept * 100;
+    yIntercept = Math.round(yIntercept);
+    yIntercept = yIntercept / 100;
+    return yIntercept;
 
   }
 
@@ -78,7 +80,9 @@ public class LinearEquation {
 
   public double thirdValue(double xThree) {
     double yThree = xThree * slope() + yIntercept();
-    yThree = (Math.round(yThree) * 100) / 100;
+    yThree = yThree * 100;
+    yThree = Math.round(yThree);
+    yThree = yThree / 100;
     return yThree;
   }
 
