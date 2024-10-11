@@ -16,10 +16,11 @@ public class Main {
     int commaPosition = pointStrOne.indexOf(",");
     int commaPositionTwo = pointStrTwo.indexOf(",");
 
-    // find the substring the number
+    // find the substring of the number and turn the string into an integer
     int xOne = Integer.parseInt(pointStrOne.substring(0, commaPosition));
     int yOne = Integer.parseInt(pointStrOne.substring(commaPosition + 1, pointStrOne.length()));
-
+    
+    // find the substring the number and turn the string into an integer
     int xTwo = Integer.parseInt(pointStrTwo.substring(0, commaPositionTwo));
     int yTwo = Integer.parseInt(pointStrTwo.substring(commaPositionTwo + 1, pointStrTwo.length()));
 
