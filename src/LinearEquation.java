@@ -47,19 +47,26 @@ public class LinearEquation {
       return Integer.toString((int)slope());
     }
   }
-
+  
+  // formats the slope
   public String equation(){
+    
+    // if the slope of the x equals zero
     if (equationSlope().equals("undefined")){
       return "undefined";
     }
+
+    // if y intercept is zero we don;t need to add the y-intercept
     if (yIntercept() == 0) {
       return "y = " + equationSlope() + "x";
     }
-
+      
+    // y intercept is negative
     else if (yIntercept() < 0){
       return "y = " + equationSlope() + "x " + yIntercept();
-
     }
+      
+    // y intercept is positive
     else{
       return "y = " + equationSlope() + "x + " + yIntercept();
     }
@@ -89,7 +96,8 @@ public class LinearEquation {
     yThree = yThree / 100;
     return yThree;
   }
-
+  
+// displays all of the information of the coordinates, slope, yintercept, equation and distance.
   public String toString() {
     String s =
             "First pair: (" + (int) xOne + "," + (int) yOne + ")\n"
