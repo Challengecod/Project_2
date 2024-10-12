@@ -3,9 +3,14 @@ public class LinearEquation {
   private double xTwo;
   private double yOne;
   private double yTwo;
+  private boolean undefined;
 
   // Constructor
   public LinearEquation(double xOne, double yOne, double xTwo, double yTwo) {
+    // precondition if both the x values are the same
+    if(xOne == xTwo){
+      this.undefined = true;
+    }
     this.xOne = xOne;
     this.yOne = yOne;
     this.xTwo = xTwo;
@@ -22,10 +27,7 @@ public class LinearEquation {
   }
 
   public String equationSlope() {
-    //divide by zero
-    if (slope() == 0) {
-      return "undefined";
-    }
+
     // checks if slope is decimal
     if (slope() % 1 != 0) {
       // if slope is negative
@@ -51,11 +53,6 @@ public class LinearEquation {
   // formats the slope
   public String equation(){
     
-    // if the slope of the x equals zero
-    if (equationSlope().equals("undefined")){
-      return "undefined";
-    }
-
     // if y intercept is zero we don;t need to add the y-intercept
     if (yIntercept() == 0) {
       return "y = " + equationSlope() + "x";
@@ -99,16 +96,23 @@ public class LinearEquation {
   
 // displays all of the information of the coordinates, slope, yintercept, equation and distance.
   public String toString() {
-    String s =
-            "First pair: (" + (int) xOne + "," + (int) yOne + ")\n"
-                    + "Second pair: (" + (int) xTwo + "," + (int) yTwo + ")\n"
-                    + "Slope of line: " + equationSlope() + "\n"
-                    + "Y-intercept: " + yIntercept() + "\n"
-                    + "Slope intercept form: " + equation() + "\n"
-                    + "Distance between points: " + distance() + "\n";
-    return s;
+        String s = "";
+        // if the x values are the same
+        if (undefined){
+            s = "Same two x values\n" + "Slope is undefined\n" + "No Equation\n";
+            return s;
+        }
+    
+        s =
+                "First pair: (" + (int) xOne + "," + (int) yOne + ")\n"
+                        + "Second pair: (" + (int) xTwo + "," + (int) yTwo + ")\n"
+                        + "Slope of line: " + equationSlope() + "\n"
+                        + "Y-intercept: " + yIntercept() + "\n"
+                        + "Slope intercept form: " + equation() + "\n"
+                        + "Distance between points: " + distance() + "\n";
+        return s;
 
-  }
+    }
 }
 
 
