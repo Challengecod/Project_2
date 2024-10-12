@@ -32,8 +32,8 @@ public class Main {
     String xThreeStr = linear.nextLine();
     double xThree = Double.parseDouble(xThreeStr);
 
-    System.out.print("Solved coordinate point is : (" + xThree + "," + points.thirdValue(xThree) + ")");
-
+    System.out.print("Solved coordinate point is : (" + String.format("%.2f", xThree) + "," + String.format("%.2f", points.thirdValue(xThree)) + ")");
+    
     linear.close();
   }
 }
