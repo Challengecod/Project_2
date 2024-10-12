@@ -26,7 +26,7 @@ public class LinearEquation {
     return slope;
   }
 
-  public String equationSlope() {
+  public String equationSlope(int format) {
 
     // checks if slope is decimal
     if (slope() % 1 != 0) {
@@ -35,7 +35,7 @@ public class LinearEquation {
         return "-" + (int) Math.abs (yOne - yTwo) + "/" + (int) Math.abs((xOne - xTwo));
       }
       // if slope is postive but both the x and y deltas are negatives cancels out to a positive
-      else if (yOne - yTwo<0 && xOne - xTwo<0 ){
+      else if (yOne - yTwo < 0 && xOne - xTwo < 0 ){
         return (int) Math.abs((yOne - yTwo)) + "/" + (int) Math.abs((xOne - xTwo));
       }
 
@@ -45,27 +45,31 @@ public class LinearEquation {
       }
     }
      // else return the whole number slope as a String
-    else{
-      return Integer.toString((int)slope());
+      if(format == -1){
+        return String.format("%.2f",slope());
+        }
+        
+      else{
+        return Integer.toString((int) slope());
+        }
     }
-  }
   
   // formats the slope
   public String equation(){
     
     // if y intercept is zero we don;t need to add the y-intercept
     if (yIntercept() == 0) {
-      return "y = " + equationSlope() + "x";
+      return "y = " + equationSlope(1) + "x";
     }
       
     // y intercept is negative
     else if (yIntercept() < 0){
-      return "y = " + equationSlope() + "x " + yIntercept();
+      return "y = " + equationSlope(1) + "x " + yIntercept();
     }
       
     // y intercept is positive
     else{
-      return "y = " + equationSlope() + "x + " + yIntercept();
+      return "y = " + equationSlope(1) + "x + " + yIntercept();
     }
   }
 
@@ -106,7 +110,7 @@ public class LinearEquation {
         s =
                 "First pair: (" + (int) xOne + "," + (int) yOne + ")\n"
                         + "Second pair: (" + (int) xTwo + "," + (int) yTwo + ")\n"
-                        + "Slope of line: " + equationSlope() + "\n"
+                        + "Slope of line: " + equationSlope(-1) + "\n"
                         + "Y-intercept: " + yIntercept() + "\n"
                         + "Slope intercept form: " + equation() + "\n"
                         + "Distance between points: " + distance() + "\n";
